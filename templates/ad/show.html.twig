@@ -1,0 +1,76 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+
+	{{ ad.title }}
+
+{% endblock %}
+
+{% block body %}
+
+	<div class="ad-title" style="background-image: url({{ ad.coverImage }})">
+		<div class="container">
+			<h1>{{ad.title}}</h1>
+			<p>{{ad.introduction}}</p>
+			<p class="h2">
+				<strong>{{ad.rooms}}
+					chambres</strong>
+				pour
+				<strong>{{ad.price}}&euro;</strong>
+				par nuit
+			</p>
+
+			<a href="" class="btn btn-primary">Reserver !</a>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 mb-3">
+				{{ ad.content | raw }}
+				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</div>
+					<div class="carousel-inner">
+						{% for image in ad.images %}
+							<div class="carousel-item active">
+								<img src="{{image.url}}" class="d-block w-100" alt="...">
+							</div>
+						{% endfor %}
+
+
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+
+			</div>
+			<div class="col">
+				<div class="row">
+					<div class="col-4">
+						<img src="http://via.placeholder.com/64x64" alt="Avatar de joseph">
+					</div>
+					<div class="col">
+						<h3>
+							joseph Dupont</h3>
+						<span class="badge badge-primary">3 annonces
+						</span>
+					</div>
+				</div>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint voluptate blanditiis obcaecati voluptatem optio illo, alias aut reprehenderit impedit nostrum consequuntur ab aspernatur corrupti, recusandae neque, pariatur est libero odio.</p>
+				<p>Deserunt tempora quidem voluptatum eaque labore non dolorum sunt explicabo suscipit cum, ullam voluptate aliquid doloremque, fugit, magni animi esse necessitatibus ea autem corrupti tempore! Eveniet provident sequi modi qui.</p>
+				<p>Reiciendis beatae voluptatibus voluptatum eos ex quas laboriosam? Odio aliquam laborum voluptate odit perspiciatis praesentium deleniti ex, cum hic suscipit reiciendis sed autem id beatae! Nulla minima libero veniam molestias.</p>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
