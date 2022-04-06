@@ -5,7 +5,10 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
+// $reques = Request::createFromGlobals();
+// echo $url = $reques->getPathInfo();
 class HomeController extends Controller
 {
 
@@ -15,6 +18,7 @@ class HomeController extends Controller
      * @Route("/hello/{prenom}/hamarrass",name="hello_prenom")
      * Montre la page qui dit Bonjour 
      */
+
 
     public function hello($prenom = " ", $age  = " ")
     {
