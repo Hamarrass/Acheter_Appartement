@@ -1,0 +1,78 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Creation d'une annonce
+{% endblock %}
+
+{% form_theme form _self %}
+
+{%block body %}
+
+	<div class="container">
+
+		<h1>Creer une nouvelle annonce</h1>
+
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+
+		<button type='submit' class="btn btn-primary">Creer la nouvelle annonce</button>
+
+		{{ form_end(form) }}
+
+	</div>
+
+{% endblock %}
+
+{% block _ad_images_widget %}
+	{{ form_widget(form) }}
+
+	<div class="form-group">
+		<button type="button" id="add-image" class="btn btn-primary">Ajouter une image</button>
+	</div>
+
+{% endblock %}
+
+{% block _ad_images_entry_row %}
+	{{ form_widget(form)}}
+{% endblock %}
+
+{% block _ad_images_entry_widget %}
+	<div class="row">
+		<div class=" col-10">
+			<div class="form-group">
+				<div class="row">
+					<div class="col">
+						{{form_widget(form.url)}}
+					</div>
+					<div class="col">
+						{{form_widget(form.caption)}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-2">
+			<button type="button" class="btn btn-danger">X</button>
+		</div>
+
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{# <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> #}
+	<script src="/js/jquery-3.5.1.min.js"></script>
+
+	<script>
+		$(document).ready(function () {
+$("#add-image").click(function () {
+const index = $('#ad_images div.form-group').length;
+const tmpl = $('#ad_images').data('prototype').replace(/__name__/g, index);
+$('#ad_images').append(tmpl);
+
+
+});
+});
+	</script>
+
+
+{% endblock %}
