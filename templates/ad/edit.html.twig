@@ -1,28 +1,27 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
-{% block title %}
-	Creation d'une annonce
+
+{% block title %}Edition d'une annonce
 {% endblock %}
-
 {% form_theme form _self %}
 
-{%block body %}
+
+{% block body %}
 
 	<div class="container">
-
-		<h1>Creer une nouvelle annonce</h1>
-
+		<h1>Modifier l'annonce :
+			{{ad.title}}</h1>
 		{{ form_start(form) }}
 		{{ form_widget(form) }}
 
-		<button type='submit' class="btn btn-primary">Creer la nouvelle annonce</button>
+		<button type="submit" class="btn btn-primary">
+			Enregistrer les modifications</button>
 
 		{{ form_end(form) }}
 
 	</div>
 
 {% endblock %}
-
 {% block _ad_images_widget %}
 	<p>
 		Ici,vous pouvez ajouter vos propers images
@@ -51,10 +50,12 @@
 				<div class="row">
 					<div class="col">
 						{{form_widget(form.url)}}
+						{{form_errors(form.url)}}
 					</div>
 
 					<div class="col">
 						{{form_widget(form.caption)}}
+						{{form_errors(form.caption)}}
 					</div>
 				</div>
 			</div>
@@ -92,6 +93,13 @@ $(target).remove();
 })
 }
 
+function updateCounter() {
+const count = + $('#ad_images div.form-group').length;
+$('#widgets-counter').val(count);
+}
+
+updateCounter()
+handleDeleteButtons();
 });
 	</script>
 
